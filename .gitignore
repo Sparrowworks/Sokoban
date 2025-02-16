@@ -1,6 +1,3 @@
-/.idea
-/.mono
-/.import
-/.vscode
-*.import
-export_presets.cfg
+# Godot 4+ specific ignores
+.godot/
+/android/
