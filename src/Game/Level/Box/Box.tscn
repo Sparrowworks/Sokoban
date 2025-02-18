@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2wrnrsprq3ee"]
+
+[ext_resource type="Script" path="res://src/Game/Level/Box/box.gd" id="1_7ylym"]
+[ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="2_3a5kl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p12c7"]
+atlas = ExtResource("2_3a5kl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp33p"]
+atlas = ExtResource("2_3a5kl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_017id"]
+atlas = ExtResource("2_3a5kl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbvr1"]
+atlas = ExtResource("2_3a5kl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opg8k"]
+atlas = ExtResource("2_3a5kl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur4c3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p12c7")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp33p")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_017id")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbvr1")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opg8k")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10mvl"]
+size = Vector2(64, 64)
+
+[node name="Box" type="Area2D" groups=["Boxes"]]
+script = ExtResource("1_7ylym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ur4c3")
+animation = &"1"
+frame_progress = 0.148942
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_10mvl")
+
+[node name="WallRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+hit_from_inside = true
+collide_with_areas = true
