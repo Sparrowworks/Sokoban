@@ -19,9 +19,7 @@ func can_move(direction: Vector2) -> bool:
 
 	if wall_ray.is_colliding():
 		var collider: Node = wall_ray.get_collider() as Node
-		if collider.is_in_group("Coins") or collider.is_in_group("SecureZones"):
-			return true
-		else:
+		if not collider.is_in_group("Coins") and not collider.is_in_group("SecureZones"):
 			return false
 
 	return true

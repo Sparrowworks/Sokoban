@@ -13,8 +13,6 @@ func _physics_process(delta: float) -> void:
 	if not move_enabled:
 		return
 
-	print(moves)
-
 	if Input.is_action_just_pressed("up"):
 		moves.append("up")
 
@@ -37,7 +35,8 @@ func can_move(direction: Vector2) -> bool:
 			var box: Box = collider as Box
 			pass
 		elif collider.is_in_group("Coins"):
-			pass
+			var coin: Coin = collider as Coin
+			coin.collect()
 		elif collider.is_in_group("SecureZones"):
 			pass
 		else:
