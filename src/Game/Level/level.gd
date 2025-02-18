@@ -1,6 +1,9 @@
 class_name Level extends Node2D
 
+signal score_updated(value: int)
 signal level_completed()
+
+@onready var player: Player = $Player
 
 var boxes: Dictionary = {}
 
@@ -13,8 +16,14 @@ func _ready() -> void:
 		coin.coin_collected.connect(_on_coin_collected)
 
 func _on_coin_collected() -> void:
-	print("SCORE")
+	score_updated.emit(100)
 
 func _on_box_updated(box: Box, is_secured: bool) -> void:
 	boxes[box] = is_secured
-	print(boxes)
+	if is_secured:
+		score_updated.emit(50)
+	else:
+		score_updated.emit(-50)
+
+	if not boxes.values().has(false):
+		level_completed.emit()

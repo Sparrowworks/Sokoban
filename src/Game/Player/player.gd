@@ -1,5 +1,7 @@
 class_name Player extends AnimatedSprite2D
 
+signal move_count_updated(move_count: int, push_count: int)
+
 @onready var wall_ray: RayCast2D = $WallRay
 
 var move_tween: Tween
@@ -8,6 +10,9 @@ var moves: Array = []
 var past_moves: Array = []
 
 var move_enabled: bool = true
+
+var move_count: int = 0
+var push_count: int = 0
 
 func _physics_process(delta: float) -> void:
 	if not move_enabled:
@@ -29,13 +34,15 @@ func _physics_process(delta: float) -> void:
 		move()
 
 func can_move(direction: Vector2) -> bool:
-	print(wall_ray.is_colliding())
 	if wall_ray.is_colliding():
 		var collider: Node = wall_ray.get_collider() as Node
-		print(collider.name)
 		if collider.is_in_group("Boxes"):
 			var box: Box = collider as Box
-			return box.move(direction)
+			if box.move(direction):
+				push_count += 1
+				move_count_updated.emit(move_count, push_count)
+			else:
+				return false
 		else:
 			return false
 
@@ -58,7 +65,11 @@ func move() -> void:
 	play(move + "_walk")
 	wall_ray.target_position = Vector2(32,32) * direction
 	wall_ray.force_raycast_update()
+
 	if can_move(direction):
+		move_count += 1
+		move_count_updated.emit(move_count, push_count)
+
 		var new_pos: Vector2 = Vector2(self.global_position.x + (64 * direction.x), self.global_position.y + (64 * direction.y))
 		move_tween = get_tree().create_tween()
 		move_tween.tween_property(self, "global_position", new_pos, 0.2)
@@ -74,3 +85,7 @@ func _on_coin_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Coins"):
 		var coin: Coin = area as Coin
 		coin.collect()
+
+
+func _on_level_level_completed() -> void:
+	move_enabled = false

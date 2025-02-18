@@ -118,3 +118,5 @@ z_index = 2
 z_index = 1
 
 [node name="SecureZones" type="Node2D" parent="."]
+
+[connection signal="level_completed" from="." to="Player" method="_on_level_level_completed"]
