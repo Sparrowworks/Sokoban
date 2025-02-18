@@ -1,0 +1,181 @@
+[gd_scene load_steps=7 format=3 uid="uid://sse43pb271kn"]
+
+[ext_resource type="Script" path="res://src/LevelSelect/level_select.gd" id="1_ii5n8"]
+[ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="2_c7uio"]
+[ext_resource type="Texture2D" uid="uid://c25yy2dtkn3qe" path="res://assets/images/UI/ButtonNormal.png" id="3_6fdpp"]
+[ext_resource type="PackedScene" uid="uid://cfuubs3c5j6y4" path="res://src/LevelSelect/LevelButton.tscn" id="3_cqml0"]
+[ext_resource type="Texture2D" uid="uid://bto1ldknbx7ao" path="res://assets/images/UI/ButtonClick.png" id="4_bt3xh"]
+[ext_resource type="Texture2D" uid="uid://c81vbup023c6i" path="res://assets/images/UI/ButtonHover.png" id="5_xgsx2"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ii5n8")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c7uio")
+theme_override_font_sizes/font_size = 92
+text = "Select a level:"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Text"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="LevelButton" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 2
+
+[node name="LevelButton3" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 3
+
+[node name="LevelButton4" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 4
+
+[node name="LevelButton5" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 5
+
+[node name="LevelButton6" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 6
+
+[node name="LevelButton7" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 7
+
+[node name="LevelButton8" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 8
+
+[node name="LevelButton9" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 9
+
+[node name="LevelButton10" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 10
+
+[node name="LevelButton11" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 11
+
+[node name="LevelButton12" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 12
+
+[node name="LevelButton13" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 13
+
+[node name="LevelButton14" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 14
+
+[node name="LevelButton15" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 15
+
+[node name="LevelButton16" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 16
+
+[node name="LevelButton17" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 17
+
+[node name="LevelButton18" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 18
+
+[node name="LevelButton19" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 19
+
+[node name="LevelButton20" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 20
+
+[node name="LevelButton21" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 21
+
+[node name="LevelButton22" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 22
+
+[node name="LevelButton23" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 23
+
+[node name="LevelButton24" parent="Text/GridContainer" instance=ExtResource("3_cqml0")]
+layout_mode = 2
+level_id = 24
+
+[node name="BackButton" type="TextureButton" parent="Text"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_6fdpp")
+texture_pressed = ExtResource("4_bt3xh")
+texture_hover = ExtResource("5_xgsx2")
+
+[node name="Text" type="Label" parent="Text/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c7uio")
+theme_override_font_sizes/font_size = 72
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="level_selected" from="Text/GridContainer/LevelButton" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton2" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton3" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton4" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton5" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton6" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton7" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton8" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton9" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton10" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton11" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton12" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton13" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton14" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton15" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton16" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton17" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton18" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton19" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton20" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton21" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton22" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton23" to="." method="_on_level_button_level_selected"]
+[connection signal="level_selected" from="Text/GridContainer/LevelButton24" to="." method="_on_level_button_level_selected"]
+[connection signal="pressed" from="Text/BackButton" to="." method="_on_back_button_pressed"]

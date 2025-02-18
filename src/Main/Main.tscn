@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bffw0yj0jwrlu"]
+[gd_scene load_steps=3 format=3 uid="uid://bffw0yj0jwrlu"]
+
+[ext_resource type="Script" path="res://src/Main/main.gd" id="1_bsus5"]
+[ext_resource type="Texture2D" uid="uid://brhjk6jema1er" path="res://assets/images/Menu/background.png" id="2_r8k1k"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,3 +10,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bsus5")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 1)
+repeat_size = Vector2(0, 1024)
+autoscroll = Vector2(0, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("2_r8k1k")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 1024)

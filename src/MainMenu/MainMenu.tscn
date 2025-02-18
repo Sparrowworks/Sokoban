@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpiy7i7c6hrk5"]
+
+[ext_resource type="Script" path="res://src/MainMenu/main_menu.gd" id="1_03yya"]
+[ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="1_v51et"]
+[ext_resource type="Texture2D" uid="uid://c25yy2dtkn3qe" path="res://assets/images/UI/ButtonNormal.png" id="2_hd82v"]
+[ext_resource type="Texture2D" uid="uid://bto1ldknbx7ao" path="res://assets/images/UI/ButtonClick.png" id="3_odd44"]
+[ext_resource type="Texture2D" uid="uid://c81vbup023c6i" path="res://assets/images/UI/ButtonHover.png" id="4_3ikco"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_03yya")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 121.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 136
+text = "SOKOBAN"
+horizontal_alignment = 1
+
+[node name="DevTitle" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 36
+text = "By sparrowworks"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -231.0
+offset_right = 192.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_hd82v")
+texture_pressed = ExtResource("3_odd44")
+texture_hover = ExtResource("4_3ikco")
+
+[node name="Text" type="Label" parent="Buttons/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 72
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_hd82v")
+texture_pressed = ExtResource("3_odd44")
+texture_hover = ExtResource("4_3ikco")
+
+[node name="Text" type="Label" parent="Buttons/SettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 72
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_hd82v")
+texture_pressed = ExtResource("3_odd44")
+texture_hover = ExtResource("4_3ikco")
+
+[node name="Text" type="Label" parent="Buttons/HelpButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 72
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_hd82v")
+texture_pressed = ExtResource("3_odd44")
+texture_hover = ExtResource("4_3ikco")
+
+[node name="Text" type="Label" parent="Buttons/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 72
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Buttons/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

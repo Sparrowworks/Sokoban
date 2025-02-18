@@ -1,0 +1,162 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsdu3jcpet5s5"]
+
+[ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="1_51w25"]
+[ext_resource type="Script" path="res://src/Settings/settings.gd" id="1_widfx"]
+[ext_resource type="Texture2D" uid="uid://c25yy2dtkn3qe" path="res://assets/images/UI/ButtonNormal.png" id="2_lvfmy"]
+[ext_resource type="Texture2D" uid="uid://bto1ldknbx7ao" path="res://assets/images/UI/ButtonClick.png" id="3_hy2ts"]
+[ext_resource type="Texture2D" uid="uid://c81vbup023c6i" path="res://assets/images/UI/ButtonHover.png" id="4_jftes"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88jkv"]
+bg_color = Color(0, 0.65098, 0.960784, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.65098, 0.960784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_widfx")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_51w25")
+theme_override_font_sizes/font_size = 92
+text = "Settings:"
+horizontal_alignment = 1
+
+[node name="MasterContainer" type="VBoxContainer" parent="Text"]
+layout_mode = 2
+
+[node name="MasterText" type="Label" parent="Text/MasterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_51w25")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Text/MasterContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="MasterSlider" type="HSlider" parent="Text/MasterContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_88jkv")
+value = 100.0
+rounded = true
+
+[node name="MusicContainer" type="VBoxContainer" parent="Text"]
+layout_mode = 2
+
+[node name="MusicText" type="Label" parent="Text/MusicContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_51w25")
+theme_override_font_sizes/font_size = 36
+text = "Music Volume: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Text/MusicContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="Text/MusicContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_88jkv")
+value = 100.0
+rounded = true
+
+[node name="SfxContainer" type="VBoxContainer" parent="Text"]
+layout_mode = 2
+
+[node name="SfxText" type="Label" parent="Text/SfxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_51w25")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Text/SfxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="SfxSlider" type="HSlider" parent="Text/SfxContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_88jkv")
+value = 100.0
+rounded = true
+
+[node name="BackButton" type="TextureButton" parent="Text"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_lvfmy")
+texture_pressed = ExtResource("3_hy2ts")
+texture_hover = ExtResource("4_jftes")
+
+[node name="Text" type="Label" parent="Text/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_51w25")
+theme_override_font_sizes/font_size = 72
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="Text/MasterContainer/Control/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Text/MusicContainer/Control/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Text/SfxContainer/Control/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Text/BackButton" to="." method="_on_back_button_pressed"]

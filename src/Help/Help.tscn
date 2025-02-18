@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=3 uid="uid://but5sbg5qhym7"]
+
+[ext_resource type="Script" path="res://src/Help/help.gd" id="1_8cdbq"]
+[ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="1_ucklr"]
+[ext_resource type="Texture2D" uid="uid://c25yy2dtkn3qe" path="res://assets/images/UI/ButtonNormal.png" id="2_uy8x0"]
+[ext_resource type="Texture2D" uid="uid://bto1ldknbx7ao" path="res://assets/images/UI/ButtonClick.png" id="3_l1w7l"]
+[ext_resource type="Texture2D" uid="uid://c81vbup023c6i" path="res://assets/images/UI/ButtonHover.png" id="4_cimid"]
+
+[sub_resource type="Animation" id="Animation_kp1or"]
+resource_name = "FadeIn"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gjtwx"]
+resource_name = "FadeOut"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1nbkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0vy5"]
+_data = {
+"FadeIn": SubResource("Animation_kp1or"),
+"FadeOut": SubResource("Animation_gjtwx"),
+"RESET": SubResource("Animation_1nbkm")
+}
+
+[node name="Help" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8cdbq")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ucklr")
+theme_override_font_sizes/font_size = 92
+text = "Credits:"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="Text"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ucklr")
+theme_override_font_sizes/font_size = 36
+text = "Developed by sparrowworks:
+programmer - sp4r0w
+tester - varga
+
+assets:
+hyper casual ui by MadFireOn
+sokoban asset pack - kenney
+Ultimate UI SFX Pack by JDSherbert
+Casual Game Vol 2 by Zakiro
+Free Game Menu Music Pack by VOiD1 Gaming"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PageButton" type="TextureButton" parent="Text"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_uy8x0")
+texture_pressed = ExtResource("3_l1w7l")
+texture_hover = ExtResource("4_cimid")
+
+[node name="Text" type="Label" parent="Text/PageButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ucklr")
+theme_override_font_sizes/font_size = 72
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Text"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_uy8x0")
+texture_pressed = ExtResource("3_l1w7l")
+texture_hover = ExtResource("4_cimid")
+
+[node name="Text" type="Label" parent="Text/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ucklr")
+theme_override_font_sizes/font_size = 72
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0vy5")
+}
+
+[connection signal="pressed" from="Text/PageButton" to="." method="_on_page_button_pressed"]
+[connection signal="pressed" from="Text/BackButton" to="." method="_on_back_button_pressed"]
