@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c18rk8rwjv1p3"]
+[gd_scene load_steps=17 format=3 uid="uid://c18rk8rwjv1p3"]
 
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_jbcjc"]
 [ext_resource type="Script" path="res://src/Game/Player/player.gd" id="2_b2qf5"]
@@ -130,6 +130,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv27w"]
+size = Vector2(64, 64)
+
 [node name="Player" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_b7cu3")
 animation = &"down_walk"
@@ -137,5 +140,15 @@ script = ExtResource("2_b2qf5")
 
 [node name="WallRay" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
+collision_mask = 3
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="CoinDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinDetector"]
+shape = SubResource("RectangleShape2D_lv27w")
+
+[connection signal="area_entered" from="CoinDetector" to="." method="_on_coin_detector_area_entered"]

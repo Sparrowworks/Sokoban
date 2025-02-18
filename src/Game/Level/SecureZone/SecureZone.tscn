@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://mmp7iho6sc4q"]
+
+[ext_resource type="Script" path="res://src/Game/Level/SecureZone/secure_zone.gd" id="1_dk3ga"]
+[ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_r0gn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrq7e"]
+atlas = ExtResource("1_r0gn3")
+region = Rect2(704, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksy3r"]
+atlas = ExtResource("1_r0gn3")
+region = Rect2(704, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2qdf"]
+atlas = ExtResource("1_r0gn3")
+region = Rect2(704, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2laaa"]
+atlas = ExtResource("1_r0gn3")
+region = Rect2(704, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feijk"]
+atlas = ExtResource("1_r0gn3")
+region = Rect2(704, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b3rd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrq7e")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksy3r")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2qdf")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2laaa")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feijk")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcprs"]
+size = Vector2(16, 16)
+
+[node name="SecureZone" type="Area2D" groups=["SecureZones"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_dk3ga")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7b3rd")
+animation = &"1"
+frame_progress = 0.63271
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pcprs")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -29,16 +29,13 @@ func _physics_process(delta: float) -> void:
 		move()
 
 func can_move(direction: Vector2) -> bool:
+	print(wall_ray.is_colliding())
 	if wall_ray.is_colliding():
 		var collider: Node = wall_ray.get_collider() as Node
+		print(collider.name)
 		if collider.is_in_group("Boxes"):
 			var box: Box = collider as Box
-			pass
-		elif collider.is_in_group("Coins"):
-			var coin: Coin = collider as Coin
-			coin.collect()
-		elif collider.is_in_group("SecureZones"):
-			pass
+			return box.move(direction)
 		else:
 			return false
 
@@ -71,3 +68,9 @@ func move() -> void:
 				move_tween.kill()
 				move_tween = null
 		)
+
+
+func _on_coin_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Coins"):
+		var coin: Coin = area as Coin
+		coin.collect()

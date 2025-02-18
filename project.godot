@@ -68,6 +68,13 @@ back={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="boxes"
+2d_physics/layer_3="coins"
+2d_physics/layer_4="securezones"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -70,12 +70,14 @@ animations = [{
 size = Vector2(64, 64)
 
 [node name="Box" type="Area2D" groups=["Boxes"]]
+collision_layer = 2
+collision_mask = 11
 script = ExtResource("1_7ylym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur4c3")
 animation = &"1"
-frame_progress = 0.148942
+frame_progress = 0.99146
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_10mvl")
@@ -84,3 +86,6 @@ shape = SubResource("RectangleShape2D_10mvl")
 target_position = Vector2(0, 32)
 hit_from_inside = true
 collide_with_areas = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

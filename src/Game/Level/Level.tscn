@@ -105,12 +105,16 @@ sources/1 = SubResource("TileSetAtlasSource_f5spk")
 script = ExtResource("1_co5du")
 
 [node name="Background" type="TileMapLayer" parent="."]
+z_index = -1
 tile_set = SubResource("TileSet_rvn3p")
 
 [node name="Player" parent="." instance=ExtResource("2_pxq8j")]
+z_index = 2
 
 [node name="Boxes" type="Node2D" parent="."]
+z_index = 2
 
 [node name="Coins" type="Node2D" parent="."]
+z_index = 1
 
 [node name="SecureZones" type="Node2D" parent="."]
