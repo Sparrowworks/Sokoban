@@ -1,12 +1,78 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3nouyivvansx"]
+[gd_scene load_steps=13 format=3 uid="uid://c3nouyivvansx"]
 
 [ext_resource type="Script" path="res://src/Game/game.gd" id="1_yx4oq"]
-[ext_resource type="Texture2D" uid="uid://c2xbsv0tta4hb" path="res://assets/images/UI/Panel.png" id="2_n1nuf"]
 [ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="3_go2qr"]
 [ext_resource type="Texture2D" uid="uid://ceog31s6ugprm" path="res://assets/images/UI/SmallButtonNormal.png" id="4_mxtr7"]
 [ext_resource type="Texture2D" uid="uid://d2qgp2a86qnjh" path="res://assets/images/UI/SmallButtonClick.png" id="5_lmcxe"]
 [ext_resource type="Texture2D" uid="uid://1iwlidqcxo72" path="res://assets/images/UI/SmallButtonHover.png" id="6_bwjn4"]
 [ext_resource type="Texture2D" uid="uid://c044yyn30e4uv" path="res://assets/images/UI/Panel2.png" id="7_n8x7f"]
+[ext_resource type="AudioStream" uid="uid://dch7pabr24frt" path="res://assets/audio/win.mp3" id="8_7a12k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mupox"]
+bg_color = Color(0.145098, 0.678431, 0.905882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.109804, 0.882353, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_ajwh6"]
+resource_name = "Decrease"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o7foe"]
+resource_name = "Increase"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_78r1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smr67"]
+_data = {
+"Decrease": SubResource("Animation_ajwh6"),
+"Increase": SubResource("Animation_o7foe"),
+"RESET": SubResource("Animation_78r1g")
+}
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -17,13 +83,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yx4oq")
 
-[node name="GamePanel" type="TextureRect" parent="."]
+[node name="GamePanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 128.0
 grow_horizontal = 2
-texture = ExtResource("2_n1nuf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mupox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GamePanel"]
 layout_mode = 1
@@ -65,6 +131,12 @@ theme_override_fonts/font = ExtResource("3_go2qr")
 theme_override_font_sizes/font_size = 36
 text = "Score: 0"
 horizontal_alignment = 1
+
+[node name="ScoreAnimation" type="AnimationPlayer" parent="GamePanel/HBoxContainer/VBoxContainer/ScoreText"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_smr67")
+}
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="GamePanel/HBoxContainer"]
 layout_mode = 2
@@ -224,6 +296,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimeTimer" type="Timer" parent="."]
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7a12k")
+bus = &"Music"
 
 [connection signal="pressed" from="GamePanel/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="EndPanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

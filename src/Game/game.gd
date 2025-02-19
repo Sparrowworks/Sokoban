@@ -1,10 +1,11 @@
 class_name Game extends Control
 
-@onready var game_panel: TextureRect = $GamePanel
+@onready var game_panel: Panel = $GamePanel
 @onready var end_panel: TextureRect = $EndPanel
 
 @onready var level_text: Label = %LevelText
 @onready var score_text: Label = %ScoreText
+@onready var score_animation: AnimationPlayer = %ScoreAnimation
 @onready var time_text: Label = %TimeText
 @onready var move_text: Label = %MoveText
 @onready var push_text: Label = %PushText
@@ -26,6 +27,7 @@ func _ready() -> void:
 	level_text.text = "Level: " + str(Globals.level)
 
 	load_level()
+	Globals.setup_game_theme()
 	time_timer.start()
 
 func load_level() -> void:
@@ -43,6 +45,11 @@ func _process(delta: float) -> void:
 		Globals.go_to_with_fade("res://src/Game/Game.tscn")
 
 func _on_score_updated(value: int) -> void:
+	if value > 0:
+		score_animation.play("Increase")
+	else:
+		score_animation.play("Decrease")
+
 	score += value
 	score_text.text = "Score: " + str(score)
 
@@ -54,6 +61,7 @@ func _on_move_count_updated(move_count: int, push_count: int) -> void:
 	push_text.text = "Pushes: " + str(pushes)
 
 func _on_menu_button_pressed() -> void:
+	Globals.game_theme.stop()
 	Globals.go_to_with_fade("res://src/MainMenu/MainMenu.tscn")
 
 func _on_time_timer_timeout() -> void:
@@ -64,6 +72,8 @@ func _on_level_completed() -> void:
 	time_timer.stop()
 
 	await get_tree().create_timer(1).timeout
+	Globals.game_theme.stop()
+	$WinSound.play()
 	game_panel.hide()
 	level.hide()
 

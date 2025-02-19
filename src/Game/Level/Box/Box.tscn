@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2wrnrsprq3ee"]
+[gd_scene load_steps=11 format=3 uid="uid://c2wrnrsprq3ee"]
 
 [ext_resource type="Script" path="res://src/Game/Level/Box/box.gd" id="1_7ylym"]
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="2_3a5kl"]
+[ext_resource type="AudioStream" uid="uid://bagf3y1oemi8c" path="res://assets/audio/secure.mp3" id="3_uq4ui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p12c7"]
 atlas = ExtResource("2_3a5kl")
@@ -77,7 +78,7 @@ script = ExtResource("1_7ylym")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur4c3")
 animation = &"1"
-frame_progress = 0.99146
+frame_progress = 0.49243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_10mvl")
@@ -86,6 +87,10 @@ shape = SubResource("RectangleShape2D_10mvl")
 target_position = Vector2(0, 32)
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="BoxSecured" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uq4ui")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

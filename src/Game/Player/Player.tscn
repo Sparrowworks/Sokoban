@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c18rk8rwjv1p3"]
+[gd_scene load_steps=19 format=3 uid="uid://c18rk8rwjv1p3"]
 
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_jbcjc"]
 [ext_resource type="Script" path="res://src/Game/Player/player.gd" id="2_b2qf5"]
+[ext_resource type="AudioStream" uid="uid://brk5avxmksqr2" path="res://assets/audio/coin.mp3" id="3_5i1bb"]
+[ext_resource type="AudioStream" uid="uid://cjl4gp6ddw7f8" path="res://assets/audio/walk.mp3" id="4_6vcer"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycbd4"]
 atlas = ExtResource("1_jbcjc")
@@ -150,5 +152,13 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinDetector"]
 shape = SubResource("RectangleShape2D_lv27w")
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5i1bb")
+bus = &"SFX"
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6vcer")
+bus = &"SFX"
 
 [connection signal="area_entered" from="CoinDetector" to="." method="_on_coin_detector_area_entered"]

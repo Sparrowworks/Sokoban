@@ -30,8 +30,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("right"):
 		moves.append("right")
 
+	if Input.is_action_just_pressed("back"):
+		execute_past_move()
+
 	if moves.size() > 0 and move_tween == null:
-		move()
+		move(moves.pop_front())
 
 func can_move(direction: Vector2) -> bool:
 	if wall_ray.is_colliding():
@@ -41,51 +44,93 @@ func can_move(direction: Vector2) -> bool:
 			if box.move(direction):
 				push_count += 1
 				move_count_updated.emit(move_count, push_count)
+				add_move(direction, box)
+				return true
 			else:
 				return false
 		else:
 			return false
 
+	add_move(direction)
 	return true
 
-func move() -> void:
-	var move: String = moves.pop_front()
-	var direction: Vector2 = Vector2.ZERO
-
+func get_direction(move: String) -> Vector2:
 	match move:
 		"up":
-			direction = Vector2.UP
+			return Vector2.UP
 		"down":
-			direction = Vector2.DOWN
+			return Vector2.DOWN
 		"left":
-			direction = Vector2.LEFT
+			return Vector2.LEFT
 		"right":
-			direction = Vector2.RIGHT
+			return Vector2.RIGHT
+		_:
+			return Vector2.ZERO
+
+func add_move(direction: Vector2, box: Box = null) -> void:
+	if direction == Vector2.UP:
+		past_moves.append("down")
+	elif direction == Vector2.DOWN:
+		past_moves.append("up")
+	elif direction == Vector2.LEFT:
+		past_moves.append("right")
+	elif direction == Vector2.RIGHT:
+		past_moves.append("left")
+
+	if box:
+		past_moves.append(box)
+
+func move(move: String, skip_check: bool = false) -> void:
+	var direction: Vector2 = get_direction(move)
 
 	play(move + "_walk")
 	wall_ray.target_position = Vector2(32,32) * direction
 	wall_ray.force_raycast_update()
 
-	if can_move(direction):
+	if not skip_check:
+		if not can_move(direction):
+			return
+
+	$WalkSound.play()
+	if not skip_check:
 		move_count += 1
-		move_count_updated.emit(move_count, push_count)
 
-		var new_pos: Vector2 = Vector2(self.global_position.x + (64 * direction.x), self.global_position.y + (64 * direction.y))
-		move_tween = get_tree().create_tween()
-		move_tween.tween_property(self, "global_position", new_pos, 0.2)
-		move_tween.tween_callback(
-			func() -> void:
-				play(move + "_idle")
-				move_tween.kill()
-				move_tween = null
-		)
+	move_count_updated.emit(move_count, push_count)
 
+	var new_pos: Vector2 = Vector2(self.global_position.x + (64 * direction.x), self.global_position.y + (64 * direction.y))
+	move_tween = get_tree().create_tween()
+	move_tween.tween_property(self, "global_position", new_pos, 0.2)
+	move_tween.tween_callback(
+		func() -> void:
+			play(move + "_idle")
+			move_tween.kill()
+			move_tween = null
+	)
+
+func execute_past_move() -> void:
+	if past_moves.size() < 1 or move_tween != null:
+		return
+
+	var move: Variant = past_moves.pop_back()
+	var box: Box
+	if typeof(move) == TYPE_STRING:
+		move(move, true)
+	else:
+		box = move as Box
+		move = past_moves.pop_back()
+		box.move(get_direction(move), true)
+		move(move, true)
+
+		push_count -= 1
+
+	move_count -= 1
+	move_count_updated.emit(move_count, push_count)
 
 func _on_coin_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Coins"):
 		var coin: Coin = area as Coin
+		$CoinSound.play()
 		coin.collect()
-
 
 func _on_level_level_completed() -> void:
 	move_enabled = false

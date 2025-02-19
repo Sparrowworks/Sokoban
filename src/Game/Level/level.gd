@@ -19,11 +19,12 @@ func _on_coin_collected() -> void:
 	score_updated.emit(100)
 
 func _on_box_updated(box: Box, is_secured: bool) -> void:
-	boxes[box] = is_secured
-	if is_secured:
-		score_updated.emit(50)
-	else:
-		score_updated.emit(-50)
+	if boxes[box] != is_secured:
+		boxes[box] = is_secured
+		if is_secured:
+			score_updated.emit(50)
+		else:
+			score_updated.emit(-50)
 
 	if not boxes.values().has(false):
 		level_completed.emit()
