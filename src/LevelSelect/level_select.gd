@@ -1,5 +1,8 @@
 extends Control
 
+func _ready() -> void:
+	Globals.play_menu_theme()
+
 func _on_level_button_level_selected(level: int) -> void:
 	Globals.menu_theme.stop()
 	Globals.level = level

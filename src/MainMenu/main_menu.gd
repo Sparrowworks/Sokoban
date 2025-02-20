@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	Globals.play_menu_theme()
+	$VersionText.text = "v" + ProjectSettings.get_setting("application/config/version")
 
 func _on_play_button_pressed() -> void:
 	Globals.go_to_with_fade("res://src/LevelSelect/LevelSelect.tscn")

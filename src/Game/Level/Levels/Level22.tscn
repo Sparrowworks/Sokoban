@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=4 uid="uid://dixgb6cvvffkg"]
+
+[ext_resource type="PackedScene" uid="uid://b3dnr8s0v20x4" path="res://src/Game/Level/Level.tscn" id="1_ns3xu"]
+[ext_resource type="PackedScene" uid="uid://c2wrnrsprq3ee" path="res://src/Game/Level/Box/Box.tscn" id="2_ygwu1"]
+[ext_resource type="PackedScene" uid="uid://w4o522f07dx4" path="res://src/Game/Level/Coin/Coin.tscn" id="3_731oo"]
+[ext_resource type="PackedScene" uid="uid://mmp7iho6sc4q" path="res://src/Game/Level/SecureZone/SecureZone.tscn" id="4_luwq2"]
+
+[node name="Level22" instance=ExtResource("1_ns3xu")]
+
+[node name="Background" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAEAAYAAQAJAAYAAAAEAAcAAQAJAAYAAAAEAAgAAQAJAAYAAAAFAAYAAQALAAYAAAAFAAcAAQALAAYAAAAFAAgAAQAJAAYAAAAFAAkAAQAJAAYAAAAFAAoAAQAJAAYAAAAGAAYAAQALAAYAAAAGAAcAAQALAAYAAAAGAAgAAQALAAYAAAAGAAkAAQALAAYAAAAGAAoAAQAJAAYAAAAHAAYAAQALAAYAAAAHAAcAAQALAAYAAAAHAAgAAQALAAYAAAAHAAkAAQALAAYAAAAHAAoAAQAJAAYAAAAIAAYAAQALAAYAAAAIAAcAAQALAAYAAAAIAAgAAQALAAYAAAAIAAkAAQALAAYAAAAIAAoAAQAJAAYAAAAJAAYAAQAJAAYAAAAJAAcAAQALAAYAAAAJAAgAAQALAAYAAAAJAAkAAQALAAYAAAAJAAoAAQAJAAYAAAAKAAcAAQALAAYAAAAKAAgAAQALAAYAAAAKAAkAAQALAAYAAAAKAAoAAQAJAAYAAAALAAcAAQAJAAYAAAALAAgAAQAJAAYAAAALAAkAAQAJAAYAAAALAAoAAQAJAAYAAAAEAAUAAQAJAAYAAAAFAAUAAQAJAAYAAAAGAAUAAQAJAAYAAAAHAAUAAQAJAAYAAAAIAAUAAQAJAAYAAAAJAAUAAQAJAAYAAAAKAAYAAQAJAAYAAAALAAYAAQAJAAYAAAA=")
+
+[node name="Player" parent="." index="1"]
+position = Vector2(352, 416)
+
+[node name="Box" parent="Boxes" index="0" instance=ExtResource("2_ygwu1")]
+position = Vector2(416, 544)
+
+[node name="Box2" parent="Boxes" index="1" instance=ExtResource("2_ygwu1")]
+position = Vector2(480, 544)
+box_type = 2
+
+[node name="Box3" parent="Boxes" index="2" instance=ExtResource("2_ygwu1")]
+position = Vector2(544, 544)
+box_type = 3
+
+[node name="Box4" parent="Boxes" index="3" instance=ExtResource("2_ygwu1")]
+position = Vector2(608, 544)
+box_type = 4
+
+[node name="Coin" parent="Coins" index="0" instance=ExtResource("3_731oo")]
+position = Vector2(416, 608)
+
+[node name="Coin2" parent="Coins" index="1" instance=ExtResource("3_731oo")]
+position = Vector2(672, 544)
+
+[node name="Coin3" parent="Coins" index="2" instance=ExtResource("3_731oo")]
+position = Vector2(544, 416)
+
+[node name="SecureZone" parent="SecureZones" index="0" instance=ExtResource("4_luwq2")]
+position = Vector2(416, 480)
+box_type = 4
+
+[node name="SecureZone2" parent="SecureZones" index="1" instance=ExtResource("4_luwq2")]
+position = Vector2(480, 480)
+box_type = 3
+
+[node name="SecureZone3" parent="SecureZones" index="2" instance=ExtResource("4_luwq2")]
+position = Vector2(544, 480)
+box_type = 2
+
+[node name="SecureZone4" parent="SecureZones" index="3" instance=ExtResource("4_luwq2")]
+position = Vector2(608, 480)

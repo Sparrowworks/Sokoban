@@ -62,7 +62,7 @@ func _on_move_count_updated(move_count: int, push_count: int) -> void:
 
 func _on_menu_button_pressed() -> void:
 	Globals.game_theme.stop()
-	Globals.go_to_with_fade("res://src/MainMenu/MainMenu.tscn")
+	Globals.go_to_with_fade("res://src/LevelSelect/LevelSelect.tscn")
 
 func _on_time_timer_timeout() -> void:
 	time += 1
