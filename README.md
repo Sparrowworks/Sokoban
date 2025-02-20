@@ -1,3 +1,5 @@
+# WARNING ! This is an old version that has been abandonded. It is stored here for archiving purposes only.
+
 # Sokoban
 A sokoban clone written in Godot
 
