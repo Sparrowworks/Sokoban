@@ -15,6 +15,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_03yya")
 
+[node name="VersionText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1024.0
+offset_top = -47.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_v51et")
+theme_override_font_sizes/font_size = 36
+text = "v1.0.0.0"
+horizontal_alignment = 2
+
 [node name="Text" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
