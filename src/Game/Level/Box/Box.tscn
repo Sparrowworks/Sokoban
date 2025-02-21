@@ -78,13 +78,14 @@ script = ExtResource("1_7ylym")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur4c3")
 animation = &"1"
-frame_progress = 0.49243
+frame_progress = 0.106177
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_10mvl")
 
 [node name="WallRay" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
+collision_mask = 3
 hit_from_inside = true
 collide_with_areas = true
 

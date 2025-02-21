@@ -125,26 +125,6 @@ text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="Buttons"]
-layout_mode = 2
-texture_normal = ExtResource("2_hd82v")
-texture_pressed = ExtResource("3_odd44")
-texture_hover = ExtResource("4_3ikco")
-
-[node name="Text" type="Label" parent="Buttons/QuitButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_v51et")
-theme_override_font_sizes/font_size = 72
-text = "Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Buttons/HelpButton" to="." method="_on_help_button_pressed"]
-[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

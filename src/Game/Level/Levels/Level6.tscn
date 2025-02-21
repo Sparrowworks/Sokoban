@@ -64,5 +64,8 @@ position = Vector2(544, 608)
 [node name="SecureZone5" parent="SecureZones" index="4" instance=ExtResource("4_hwtht")]
 position = Vector2(544, 736)
 
-[node name="SecureZone6" parent="SecureZones" index="5" instance=ExtResource("4_hwtht")]
+[node name="SecureZone7" parent="SecureZones" index="5" instance=ExtResource("4_hwtht")]
+position = Vector2(480, 672)
+
+[node name="SecureZone6" parent="SecureZones" index="6" instance=ExtResource("4_hwtht")]
 position = Vector2(672, 672)

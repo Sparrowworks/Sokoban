@@ -23,9 +23,9 @@ var content: Array[String] = [
 	Casual Game Vol 2 by Zakiro
 	Free Game Menu Music Pack by VOiD1 Gaming",
 
-	"WASD/Arrow keys - move the character
+	"WASD or Arrow keys - move the character
 	R - reset the level
-	Q - reverse a move (limit up to 50 moves)"
+	Q - undo a move"
 ]
 
 func _ready() -> void:

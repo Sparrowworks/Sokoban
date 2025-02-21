@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2qgp2a86qnjh"
-path="res://.godot/imported/SmallButtonClick.png-fe908d6d1777a206e88b6819475edb5d.ctex"
+path.s3tc="res://.godot/imported/SmallButtonClick.png-fe908d6d1777a206e88b6819475edb5d.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/UI/SmallButtonClick.png"
-dest_files=["res://.godot/imported/SmallButtonClick.png-fe908d6d1777a206e88b6819475edb5d.ctex"]
+dest_files=["res://.godot/imported/SmallButtonClick.png-fe908d6d1777a206e88b6819475edb5d.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

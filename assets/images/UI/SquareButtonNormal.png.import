@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtlrkgpcu5mgd"
-path="res://.godot/imported/SquareButtonNormal.png-d199d4c6f4bdbca684c32326b4942dc4.ctex"
+path.s3tc="res://.godot/imported/SquareButtonNormal.png-d199d4c6f4bdbca684c32326b4942dc4.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/UI/SquareButtonNormal.png"
-dest_files=["res://.godot/imported/SquareButtonNormal.png-d199d4c6f4bdbca684c32326b4942dc4.ctex"]
+dest_files=["res://.godot/imported/SquareButtonNormal.png-d199d4c6f4bdbca684c32326b4942dc4.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
