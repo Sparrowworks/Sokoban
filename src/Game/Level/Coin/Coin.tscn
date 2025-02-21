@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://w4o522f07dx4"]
+[gd_scene load_steps=8 format=3 uid="uid://w4o522f07dx4"]
 
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_ma58e"]
 [ext_resource type="Script" path="res://src/Game/Level/Coin/coin.gd" id="1_mkxcx"]
@@ -11,34 +11,39 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_af7n0"]
 resource_name = "Scale"
 loop_mode = 2
+
+[sub_resource type="Animation" id="Animation_gwae8"]
+resource_name = "Bounce"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 1.5),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0, 1)]
+"values": [Vector2(0, 0), Vector2(0, 16), Vector2(0, 0), Vector2(0, -16), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0x6nk"]
 _data = {
+"Bounce": SubResource("Animation_gwae8"),
 "RESET": SubResource("Animation_qgacn"),
 "Scale": SubResource("Animation_af7n0")
 }
@@ -50,6 +55,7 @@ collision_priority = 0.0
 script = ExtResource("1_mkxcx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
 texture = ExtResource("1_ma58e")
 region_enabled = true
 region_rect = Rect2(576, 321, 63, 62)
