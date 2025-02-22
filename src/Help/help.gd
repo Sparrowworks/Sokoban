@@ -15,7 +15,7 @@ var headings: Array[String] = [
 var content: Array[String] = [
 	"Developed by sparrowworks:
 	programmer - sp4r0w
-	tester - varga
+	tester - vargadot
 	assets:
 	hyper casual ui by MadFireOn
 	sokoban asset pack - kenney
