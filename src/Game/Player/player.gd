@@ -89,6 +89,7 @@ func move(move: String, skip_check: bool = false) -> void:
 
 	if not skip_check:
 		if not can_move(direction):
+			play(move + "_idle")
 			return
 
 	$WalkSound.play()
