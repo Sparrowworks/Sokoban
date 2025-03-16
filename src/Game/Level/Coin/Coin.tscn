@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://w4o522f07dx4"]
 
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_ma58e"]
-[ext_resource type="Script" path="res://src/Game/Level/Coin/coin.gd" id="1_mkxcx"]
+[ext_resource type="Script" uid="uid://dglxoaem2jfvn" path="res://src/Game/Level/Coin/coin.gd" id="1_mkxcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq68g"]
 size = Vector2(32, 32)
@@ -43,9 +43,9 @@ loop_mode = 2
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0x6nk"]
 _data = {
-"Bounce": SubResource("Animation_gwae8"),
-"RESET": SubResource("Animation_qgacn"),
-"Scale": SubResource("Animation_af7n0")
+&"Bounce": SubResource("Animation_gwae8"),
+&"RESET": SubResource("Animation_qgacn"),
+&"Scale": SubResource("Animation_af7n0")
 }
 
 [node name="Coin" type="Area2D" groups=["Coins"]]
@@ -65,5 +65,5 @@ shape = SubResource("RectangleShape2D_oq68g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0x6nk")
+&"": SubResource("AnimationLibrary_0x6nk")
 }

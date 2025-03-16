@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmg02jqmd25wg" path="res://assets/images/UI/SquareButtonClick.png" id="2_f2rl5"]
 [ext_resource type="Texture2D" uid="uid://dfjbs3u8pl7x4" path="res://assets/images/UI/SquareButtonHover.png" id="3_6e30r"]
 [ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="4_84iu6"]
-[ext_resource type="Script" path="res://src/LevelSelect/level_button.gd" id="4_kv6k8"]
+[ext_resource type="Script" uid="uid://cjxi4r6o7tx46" path="res://src/LevelSelect/level_button.gd" id="4_kv6k8"]
 
 [node name="LevelButton" type="TextureButton"]
 texture_normal = ExtResource("1_bkx8g")

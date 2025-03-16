@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://mmp7iho6sc4q"]
 
-[ext_resource type="Script" path="res://src/Game/Level/SecureZone/secure_zone.gd" id="1_dk3ga"]
+[ext_resource type="Script" uid="uid://dcakib0iipgqt" path="res://src/Game/Level/SecureZone/secure_zone.gd" id="1_dk3ga"]
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_r0gn3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrq7e"]

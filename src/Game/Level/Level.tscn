@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3dnr8s0v20x4"]
 
-[ext_resource type="Script" path="res://src/Game/Level/level.gd" id="1_co5du"]
+[ext_resource type="Script" uid="uid://bgjchk73fu145" path="res://src/Game/Level/level.gd" id="1_co5du"]
 [ext_resource type="Texture2D" uid="uid://crikh2bx0oqd7" path="res://assets/images/Game/sokoban_tilesheet.png" id="1_wksak"]
 [ext_resource type="PackedScene" uid="uid://c18rk8rwjv1p3" path="res://src/Game/Player/Player.tscn" id="2_pxq8j"]
 

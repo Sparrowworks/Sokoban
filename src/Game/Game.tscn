@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3nouyivvansx"]
 
-[ext_resource type="Script" path="res://src/Game/game.gd" id="1_yx4oq"]
+[ext_resource type="Script" uid="uid://byewdxunr4i1w" path="res://src/Game/game.gd" id="1_yx4oq"]
 [ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="3_go2qr"]
 [ext_resource type="Texture2D" uid="uid://ceog31s6ugprm" path="res://assets/images/UI/SmallButtonNormal.png" id="4_mxtr7"]
 [ext_resource type="Texture2D" uid="uid://d2qgp2a86qnjh" path="res://assets/images/UI/SmallButtonClick.png" id="5_lmcxe"]
@@ -69,9 +69,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smr67"]
 _data = {
-"Decrease": SubResource("Animation_ajwh6"),
-"Increase": SubResource("Animation_o7foe"),
-"RESET": SubResource("Animation_78r1g")
+&"Decrease": SubResource("Animation_ajwh6"),
+&"Increase": SubResource("Animation_o7foe"),
+&"RESET": SubResource("Animation_78r1g")
 }
 
 [node name="Game" type="Control"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsdu3jcpet5s5"]
 
 [ext_resource type="FontFile" uid="uid://800ajsr6nfi3" path="res://assets/fonts/Lemon Days.ttf" id="1_51w25"]
-[ext_resource type="Script" path="res://src/Settings/settings.gd" id="1_widfx"]
+[ext_resource type="Script" uid="uid://c220hov5vroam" path="res://src/Settings/settings.gd" id="1_widfx"]
 [ext_resource type="Texture2D" uid="uid://c25yy2dtkn3qe" path="res://assets/images/UI/ButtonNormal.png" id="2_lvfmy"]
 [ext_resource type="Texture2D" uid="uid://bto1ldknbx7ao" path="res://assets/images/UI/ButtonClick.png" id="3_hy2ts"]
 [ext_resource type="Texture2D" uid="uid://c81vbup023c6i" path="res://assets/images/UI/ButtonHover.png" id="4_jftes"]
