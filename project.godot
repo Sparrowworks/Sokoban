@@ -11,11 +11,11 @@ config_version=5
 [application]
 
 config/name="NewSokoban"
-config/version="1.1.2.0"
+config/version="1.1.2"
 run/main_scene="res://src/Main/Main.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://cbrigr0arb40l"
-config/icon="res://icon.svg"
+config/icon="uid://uq0yb4s0j76w"
 
 [autoload]
 
