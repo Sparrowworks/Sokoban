@@ -123,7 +123,7 @@ func execute_past_move() -> void:
 	var move: Variant = past_moves.pop_back()
 	var box: Box
 
-	# If the type of the last move is a string then its just a player movement to be undone
+	# If the last move is a string, it represents a player movement that needs to be undone.
 	if typeof(move) == TYPE_STRING:
 		move(move, true)
 	else: # If the type of the last move is a box, this means we have to push back the box and the player based on the direction which is behind the box in the list.
