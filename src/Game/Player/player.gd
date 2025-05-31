@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		execute_past_move()
 
 	if moves.size() > 0 and move_tween == null:
-		move(moves.pop_front()) # Gets the first move from the list and executes it
+		move(moves.pop_front()) # Executes the first move from the list
 
 func can_move(direction: Vector2) -> bool:
 	# If we hit a box, check if we can push it, else we stop movement
