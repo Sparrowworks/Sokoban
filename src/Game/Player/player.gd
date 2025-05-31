@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		return
 
 	# Each button press adds a move to the list in the order the keys are pressed.
-	# At the end of _process, the first move from the list will be executed.
+	# At the end of _process, Execute the first move from the list.
 
 	if Input.is_action_just_pressed("up"):
 		moves.append("up")
