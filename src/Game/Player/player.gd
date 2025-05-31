@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if not move_enabled:
 		return
 
-	# The moves are structured in a way where each button press will add a move to the list based on the order of pressed keys
+	# Each button press adds a move to the list in the order the keys are pressed.
 	# At the end of _process, the first move from the list will be executed.
 
 	if Input.is_action_just_pressed("up"):
