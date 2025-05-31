@@ -19,6 +19,7 @@ func _on_coin_collected() -> void:
 	score_updated.emit(100)
 
 func _on_box_updated(box: Box, is_secured: bool) -> void:
+	# Remove the score if a previously secured box is pushed out of the secure zone.
 	if boxes[box] != is_secured:
 		boxes[box] = is_secured
 		if is_secured:

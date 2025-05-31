@@ -30,6 +30,11 @@ func _ready() -> void:
 	Globals.setup_game_theme()
 	time_timer.start()
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("reset"):
+		Globals.go_to_with_fade("res://src/Game/Game.tscn")
+		return
+
 func load_level() -> void:
 	var path: String = "res://src/Game/Level/Levels/Level" + str(Globals.level) + ".tscn"
 	var level_scene: PackedScene = load(path)
@@ -39,10 +44,6 @@ func load_level() -> void:
 	level.level_completed.connect(_on_level_completed)
 	level.score_updated.connect(_on_score_updated)
 	level.player.move_count_updated.connect(_on_move_count_updated)
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
-		Globals.go_to_with_fade("res://src/Game/Game.tscn")
 
 func _on_score_updated(value: int) -> void:
 	if value > 0:
@@ -86,7 +87,6 @@ func _on_level_completed() -> void:
 		play_button.hide()
 
 	end_panel.show()
-
 
 func _on_play_button_pressed() -> void:
 	Globals.level += 1
