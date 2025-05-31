@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		return
 
 	# Each button press adds a move to the list in the order the keys are pressed.
-	# At the end of _process, Execute the first move from the list.
+	# At the end of _process, execute the first move from the list.
 
 	if Input.is_action_just_pressed("up"):
 		moves.append("up")
@@ -50,14 +50,14 @@ func can_move(direction: Vector2) -> bool:
 			if box.move(direction):
 				push_count += 1
 				move_count_updated.emit(move_count, push_count)
-				add_move_to_past_moves(direction, box)
+				add_move_to_history(direction, box)
 				return true
 			else:
 				return false
 		else:
 			return false
 
-	add_move_to_past_moves(direction)
+	add_move_to_history(direction)
 	return true
 
 func get_direction(move: String) -> Vector2:
@@ -73,7 +73,7 @@ func get_direction(move: String) -> Vector2:
 		_:
 			return Vector2.ZERO
 
-func add_move_to_past_moves(direction: Vector2, box: Box = null) -> void:
+func add_move_to_history(direction: Vector2, box: Box = null) -> void:
 	# Adds the last move to the list of past moves. If a box was pushed, insert it after the move direction at the front of the list.
 	if direction == Vector2.UP:
 		past_moves.append("down")
