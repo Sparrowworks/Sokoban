@@ -94,7 +94,7 @@ func move(move: String, skip_check: bool = false) -> void:
 	wall_ray.target_position = Vector2(TILE_SIZE/2, TILE_SIZE/2) * direction
 	wall_ray.force_raycast_update()
 
-	# skip_check is for movements that are being undone and thus we dont have to check if we can move in that direction
+	# skip_check is used for undoing moves, so we skip validating the movement direction.
 	if not skip_check:
 		if not can_move(direction):
 			play(move + "_idle")
