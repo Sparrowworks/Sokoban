@@ -74,7 +74,7 @@ func get_direction(move: String) -> Vector2:
 			return Vector2.ZERO
 
 func add_move_to_past_moves(direction: Vector2, box: Box = null) -> void:
-	# Adds the last executed move to the list of past moves. If a box was pushed, its added to the front, after the direction of the movement
+	# Adds the last move to the list of past moves. If a box was pushed, insert it after the move direction at the front of the list.
 	if direction == Vector2.UP:
 		past_moves.append("down")
 	elif direction == Vector2.DOWN:
