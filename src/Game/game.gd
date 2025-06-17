@@ -23,6 +23,7 @@ var pushes: int = 0
 
 var level: Level
 
+
 func _ready() -> void:
 	level_text.text = "Level: " + str(Globals.level)
 
@@ -30,10 +31,12 @@ func _ready() -> void:
 	Globals.setup_game_theme()
 	time_timer.start()
 
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset"):
 		Globals.go_to_with_fade("res://src/Game/Game.tscn")
 		return
+
 
 func load_level() -> void:
 	var path: String = "res://src/Game/Level/Levels/Level" + str(Globals.level) + ".tscn"
@@ -45,6 +48,7 @@ func load_level() -> void:
 	level.score_updated.connect(_on_score_updated)
 	level.player.move_count_updated.connect(_on_move_count_updated)
 
+
 func _on_score_updated(value: int) -> void:
 	if value > 0:
 		score_animation.play("Increase")
@@ -54,6 +58,7 @@ func _on_score_updated(value: int) -> void:
 	score += value
 	score_text.text = "Score: " + str(score)
 
+
 func _on_move_count_updated(move_count: int, push_count: int) -> void:
 	moves = move_count
 	pushes = push_count
@@ -61,13 +66,16 @@ func _on_move_count_updated(move_count: int, push_count: int) -> void:
 	move_text.text = "Moves: " + str(moves)
 	push_text.text = "Pushes: " + str(pushes)
 
+
 func _on_menu_button_pressed() -> void:
 	Globals.game_theme.stop()
 	Globals.go_to_with_fade("res://src/LevelSelect/LevelSelect.tscn")
 
+
 func _on_time_timer_timeout() -> void:
 	time += 1
 	time_text.text = "Time: " + str(time)
+
 
 func _on_level_completed() -> void:
 	time_timer.stop()
@@ -87,6 +95,7 @@ func _on_level_completed() -> void:
 		play_button.hide()
 
 	end_panel.show()
+
 
 func _on_play_button_pressed() -> void:
 	Globals.level += 1

@@ -22,15 +22,16 @@ var content: Array[String] = [
 	Ultimate UI SFX Pack by JDSherbert
 	Casual Game Vol 2 by Zakiro
 	Free Game Menu Music Pack by VOiD1 Gaming""",
-
 	"""WASD or Arrow keys - move the character
 	R - reset the level
 	Q - undo a move"""
 ]
 
+
 func _ready() -> void:
 	title.text = headings[page]
 	text.text = content[page]
+
 
 func _on_page_button_pressed() -> void:
 	if is_switching:
@@ -49,6 +50,7 @@ func _on_page_button_pressed() -> void:
 	await animation_player.animation_finished
 
 	is_switching = false
+
 
 func _on_back_button_pressed() -> void:
 	Globals.go_to_with_fade("res://src/MainMenu/MainMenu.tscn")
