@@ -13,7 +13,7 @@ var headings: Array[String] = [
 	"Controls:",
 ]
 var content: Array[String] = [
-	"Developed by sparrowworks:
+	"""Developed by sparrowworks:
 	programmer - sp4r0w
 	tester - vargadot
 	assets:
@@ -21,11 +21,11 @@ var content: Array[String] = [
 	sokoban asset pack - kenney
 	Ultimate UI SFX Pack by JDSherbert
 	Casual Game Vol 2 by Zakiro
-	Free Game Menu Music Pack by VOiD1 Gaming",
+	Free Game Menu Music Pack by VOiD1 Gaming""",
 
-	"WASD or Arrow keys - move the character
+	"""WASD or Arrow keys - move the character
 	R - reset the level
-	Q - undo a move"
+	Q - undo a move"""
 ]
 
 func _ready() -> void:
